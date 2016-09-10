@@ -1,4 +1,4 @@
-APP.controller('dashboardController', ['$scope', '$filter', 'apiFactory', function ($scope, $filter, apiFactory) {
+APP.controller('dashboardController', ['$scope', 'apiFactory', function ($scope, apiFactory) {
 
 
 }]);
