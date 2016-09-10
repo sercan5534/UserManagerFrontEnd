@@ -15,7 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4",
+    "jquery": "~2.1.4", //perhaps I can use
     "angular": "~1.4.8",
     "angular-route": "~1.4.8",
     "angular-cookie": "~4.0.9",
