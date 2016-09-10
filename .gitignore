@@ -1,0 +1,10 @@
+/.idea/*
+/node_modules/*
+/bower_components/*
+.project
+npm-debug.log
+/assets/js/script.min.js
+/assets/js/script.min.js.map
+/assets/css/style.min.css
+/build/*
+!/build/touch
