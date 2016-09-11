@@ -16,7 +16,7 @@ Then:
 - **bower install**
 
 
-to run several task (minify,unit test etc.), but firstly install grunt-cli globally:
+to run several task (minify,unit test etc.)  install grunt-cli globally:
 
 - **sudo npm install -g grunt-cli**
 
