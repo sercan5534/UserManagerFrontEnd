@@ -20,6 +20,8 @@ to run several task (minify,unit test etc.)  install grunt-cli globally:
 
 - **sudo npm install -g grunt-cli**
 
+Then:
+
 - **grunt**
 
 
