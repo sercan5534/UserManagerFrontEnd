@@ -1,1 +1,31 @@
-group detail
+
+<h2 class="box-title">{{groupDetail.name}}</h2>
+<div class="box">
+    <div class="box-header">
+        <h4 class="box-title">Assigned Users</h4>
+    </div>
+    <div class="box-body">
+        <div ng-if="userList.length>0">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="user in userList">
+                    <td>{{user.name}}</td>
+                    <td>
+                        {{user.email}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-if="userList == null || userList.length == 0">
+            <h5>No records found, add first </h5>
+        </div>
+    </div>
+</div>
+

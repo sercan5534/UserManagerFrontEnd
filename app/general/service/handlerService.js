@@ -24,8 +24,57 @@ APP.factory('apiFactory', ['$http', '$location', function ($http, $location) {
         })
     };
 
+
+    factory.getUsersByGroupId= function(id,callback){
+        return $http.get(urlBase+'user/all/'+id).then(function (response) {
+            callback(response.data);
+        }, function (response) {
+            handleError(callback,response);
+        })
+    };
+
+    factory.deleteUserById= function(id,callback){
+        return $http.delete(urlBase+'user/'+id).then(function (response) {
+            callback(response.data);
+        }, function (response) {
+            handleError(callback,response);
+        })
+    };
+
     factory.addUser = function(callback,data){
         return $http.post(urlBase+'user',data).then(function (response) {
+            callback(response.data);
+        }, function (response) {
+            handleError(callback,response);
+        })
+    };
+
+    factory.getGroupList= function(callback){
+        return $http.get(urlBase+'group').then(function (response) {
+            callback(response.data);
+        }, function (response) {
+            handleError(callback,response);
+        })
+    };
+
+    factory.getGroupById= function(id,callback){
+        return $http.get(urlBase+'group/'+id).then(function (response) {
+            callback(response.data);
+        }, function (response) {
+            handleError(callback,response);
+        })
+    };
+
+    factory.deleteGroupById= function(id,callback){
+        return $http.delete(urlBase+'group/'+id).then(function (response) {
+            callback(response.data);
+        }, function (response) {
+            handleError(callback,response);
+        })
+    };
+
+    factory.addGroup = function(callback,data){
+        return $http.post(urlBase+'group',data).then(function (response) {
             callback(response.data);
         }, function (response) {
             handleError(callback,response);

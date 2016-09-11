@@ -18,7 +18,7 @@ describe("Dashboard testing suite", function () {
     });
 
 
-    it("Should statisticObj method be defined", function () {
+    it("Sample test example, it does not cover code!", function () {
         expect(true).toBeTruthy();
     });
 });

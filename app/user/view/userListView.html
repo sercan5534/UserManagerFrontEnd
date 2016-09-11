@@ -1,3 +1,6 @@
+
+<div uib-alert ng-repeat="alert in alerts" dismiss-on-timeout="4000" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</div>
+
 <button type="button" class="btn btn-primary" ng-click="openAddModal()">
     Add User
 </button>
@@ -21,7 +24,7 @@
                         <td>{{user.name}}</td>
                         <td>{{user.email}}</td>
                         <td>
-                            <button class="btn btn-default" type="button" ng-click="detailUser(user.id)">Detail</button>
+                            <button class="btn btn-default" type="button" ng-click="openDetail(user.id)">Detail</button>
                             <button class="btn btn-danger" type="button" ng-click="deleteUser(user.id)">Delete</button>
                         </td>
                     </tr>
@@ -29,9 +32,7 @@
             </table>
         </div>
         <div ng-if="userList == null || userList.length == 0">
-            <h5>No records found, add first <button type="button" class="btn btn-primary" ng-click="openAddModal()">
-                Add User
-            </button> </h5>
+            <h5>No records found, add first </h5>
         </div>
     </div>
 </div>
@@ -53,6 +54,13 @@
                 <input type="email" class="form-control" id="emailInput" placeholder="Email" name="email" ng-model="newUser.email"  ng-required="true">
                 <div class="text-red" ng-show="addUserForm.email.$error.required && addUserForm.email.$dirty">Please provide your email</div>
                 <div class="text-red" ng-show="addUserForm.email.$invalid && addUserForm.email.$dirty">Please provide valid email</div>
+            </div>
+            <div class="form-group">
+                <label for="groupListInput">Name</label>
+                <select class="form-control" id="groupListInput" placeholder="Group" name="groupList" ng-model="newUser.groupList"  ng-required="true">
+                    <option ng-repeat="group in groupList" value="{{group.id}}">{{group.name}}</option>
+                </select>
+                <div class="text-red" ng-show="addUserForm.groupId.$error.required && addUserForm.groupId.$dirty">User should include into a group</div>
             </div>
             <div class="form-group">
                 <label for="descriptionInput">Description</label>

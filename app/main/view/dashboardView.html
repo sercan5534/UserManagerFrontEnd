@@ -1,3 +1,5 @@
+<div uib-alert ng-repeat="alert in alerts" dismiss-on-timeout="4000" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</div>
+
 <div class="row">
     <div class="col-sm-12">
         <div class="box">
@@ -5,7 +7,28 @@
                 <h3 class="box-title">Groups</h3>
             </div>
             <div class="box-body">
-                TODO: group list table
+                <div ng-if="groupList.length>0">
+                    <table class="table table-responsive table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="group in groupList">
+                            <td>{{group.name}}</td>
+                            <td>
+                                <button class="btn btn-default" type="button" ng-click="openGroupDetail(group.id)">Detail</button>
+                                <button class="btn btn-danger" type="button" ng-click="deleteGroup(group.id)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div ng-if="groupList == null || groupList.length == 0">
+                    <h5>No records found, add first </h5>
+                </div>
             </div>
         </div>
 
@@ -28,7 +51,7 @@
                             <td>{{user.name}}</td>
                             <td>{{user.email}}</td>
                             <td>
-                                <button class="btn btn-default" type="button" ng-click="detailUser(user.id)">Detail</button>
+                                <button class="btn btn-default" type="button" ng-click="openUserDetail(user.id)">Detail</button>
                                 <button class="btn btn-danger" type="button" ng-click="deleteUser(user.id)">Delete</button>
                             </td>
                         </tr>
@@ -36,9 +59,7 @@
                     </table>
                 </div>
                 <div ng-if="userList == null || userList.length == 0">
-                    <h5>No records found, add first <button type="button" class="btn btn-primary" ng-click="openAddModal()">
-                        Add User
-                    </button> </h5>
+                    <h5>No records found, add first </h5>
                 </div>
             </div>
         </div>

@@ -1,1 +1,54 @@
-group list
+
+<div uib-alert ng-repeat="alert in alerts" dismiss-on-timeout="4000" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</div>
+
+<button type="button" class="btn btn-primary" ng-click="openAddModal()">
+    Add group
+</button>
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Groups</h3>
+    </div>
+    <div class="box-body">
+        <div ng-if="groupList.length>0">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="group in groupList">
+                    <td>{{group.name}}</td>
+                    <td>
+                        <button class="btn btn-default" type="button" ng-click="openDetail(group.id)">Detail</button>
+                        <button class="btn btn-danger" type="button" ng-click="deleteGroup(group.id)">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-if="groupList == null || groupList.length == 0">
+            <h5>No records found, add first </h5>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="addGroupModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Add new group</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <form name="addGroupForm" ng-submit="save()" novalidate>
+            <div class="form-group">
+                <label for="nameInput">Name</label>
+                <input type="text" class="form-control" id="nameInput" placeholder="Name" name="name" ng-model="newGroup.name"  ng-required="true">
+                <div class="text-red" ng-show="addGroupForm.name.$error.required && addGroupForm.name.$dirty">Please provide group name</div>
+            </div>
+            <button class="btn btn-primary" type="submit" ng-disabled="addGroupForm.$invalid" name="submitButton"  >Save</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </form>
+    </div>
+</script>
