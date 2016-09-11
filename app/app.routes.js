@@ -9,13 +9,13 @@ APP.config(['$routeProvider', function($routeProvider) {
         
         // User List
         .when('/user',{
-            templateUrl: '/app/user/view/userList.html',
+            templateUrl: '/app/user/view/userListView.html',
             controller: 'userListController'
         })
         
         // User Detail
         .when('/user/:id',{
-            templateUrl: '/app/user/view/userDetail.html',
+            templateUrl: '/app/user/view/userDetailView.html',
             controller: 'userDetailController'
         })
 

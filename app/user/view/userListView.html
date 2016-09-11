@@ -1,0 +1,65 @@
+<button type="button" class="btn btn-primary" ng-click="openAddModal()">
+    Add User
+</button>
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Users</h3>
+    </div>
+    <div class="box-body">
+        <div ng-if="userList.length>0">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in userList">
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <button class="btn btn-default" type="button" ng-click="detailUser(user.id)">Detail</button>
+                            <button class="btn btn-danger" type="button" ng-click="deleteUser(user.id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-if="userList == null || userList.length == 0">
+            <h5>No records found, add first <button type="button" class="btn btn-primary" ng-click="openAddModal()">
+                Add User
+            </button> </h5>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="addModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Add new user</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <form name="addUserForm" ng-submit="save()" novalidate>
+            <div class="form-group">
+                <label for="nameInput">Name</label>
+                <input type="text" class="form-control" id="nameInput" placeholder="Name" name="name" ng-model="newUser.name"  ng-required="true">
+                <div class="text-red" ng-show="addUserForm.name.$error.required && addUserForm.name.$dirty">Please provide your name</div>
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Email address</label>
+                <input type="email" class="form-control" id="emailInput" placeholder="Email" name="email" ng-model="newUser.email"  ng-required="true">
+                <div class="text-red" ng-show="addUserForm.email.$error.required && addUserForm.email.$dirty">Please provide your email</div>
+                <div class="text-red" ng-show="addUserForm.email.$invalid && addUserForm.email.$dirty">Please provide valid email</div>
+            </div>
+            <div class="form-group">
+                <label for="descriptionInput">Description</label>
+                <textarea class="form-control" id="descriptionInput" ng-model="newUser.description"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit" ng-disabled="addUserForm.$invalid" name="submitButton"  >Save</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </form>
+    </div>
+</script>
